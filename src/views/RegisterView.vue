@@ -310,7 +310,7 @@ const handleSubmit = async () => {
     toast.success(t('auth.registerSuccess'))
     router.push('/dashboard')
   } catch (error: any) {
-    toast.error(error.message || t('errors.registerFailed'))
+    toast.error( t('auth.'+error.message))
   } finally {
     loading.value = false
   }

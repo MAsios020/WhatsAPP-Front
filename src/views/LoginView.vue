@@ -244,7 +244,7 @@ const handleSubmit = async () => {
     router.push('/dashboard')
   } catch (error: any) {
     console.error('Login error:', error)
-    toast.error(error.message || t('errors.loginFailed'))
+    toast.error( t('auth.'+error.message))
   } finally {
     loading.value = false
   }

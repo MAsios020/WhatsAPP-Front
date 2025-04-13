@@ -1,0 +1,139 @@
+/* WhatsApp Sender - CSS Variables */
+
+:root {
+  /* Main colors */
+  --color-primary: #25D366;
+  --color-primary-dark: #128C7E;
+  --color-primary-rgb: 37, 211, 102;
+  --color-secondary: #34B7F1;
+  --color-success: #4CAF50;
+  --color-warning: #FFC107;
+  --color-danger: #F44336;
+  --color-danger-rgb: 244, 67, 54;
+  --color-info: #2196F3;
+  
+  /* Grayscale */
+  --color-white: #FFFFFF;
+  --color-gray-100: #F8F9FA;
+  --color-gray-200: #E9ECEF;
+  --color-gray-300: #DEE2E6;
+  --color-gray-400: #CED4DA;
+  --color-gray-500: #ADB5BD;
+  --color-gray-600: #6C757D;
+  --color-gray-700: #495057;
+  --color-gray-800: #343A40;
+  --color-gray-900: #212529;
+  --color-black: #000000;
+  
+  /* UI colors */
+  --bg-color: var(--color-white);
+  --text-color: var(--color-gray-800);
+  --text-muted: var(--color-gray-600);
+  --border-color: var(--color-gray-300);
+  --sidebar-bg: var(--color-white);
+  --sidebar-color: var(--color-gray-700);
+  --sidebar-active: var(--color-primary);
+  --header-bg: var(--color-white);
+  --card-bg: var(--color-white);
+  --card-shadow: rgba(0, 0, 0, 0.05);
+  --hover-bg: var(--color-gray-100);
+  
+  /* Sizes */
+  --sidebar-width: 280px;
+  --sidebar-collapsed-width: 70px;
+  --header-height: 70px;
+  --border-radius: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-sm: 4px;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  
+  /* Transitions */
+  --transition: all 0.3s ease;
+  
+  /* Font Sizes */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  
+  /* Spacing */
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.25rem;
+  --spacing-6: 1.5rem;
+  --spacing-8: 2rem;
+  --spacing-10: 2.5rem;
+  --spacing-12: 3rem;
+  
+  /* Z-Index */
+  --z-sidebar: 1000;
+  --z-header: 900;
+  --z-modal: 1100;
+  --z-notification: 1200;
+  --z-tooltip: 1300;
+}
+
+/* Dark Theme Variables */
+body.dark-theme {
+  --bg-color: #121212;
+  --text-color: #E9ECEF;
+  --text-muted: #ADB5BD;
+  --border-color: #2D3748;
+  --sidebar-bg: #1A202C;
+  --sidebar-color: #E2E8F0;
+  --header-bg: #1A202C;
+  --card-bg: #1A202C;
+  --card-shadow: rgba(0, 0, 0, 0.2);
+  --hover-bg: #2D3748;
+  
+  /* Enhanced visibility for dropdowns in dark mode */
+  --dropdown-bg: #2A3441;
+  --dropdown-hover: #3A4556;
+  --dropdown-border: #4A5568;
+  --dropdown-text: #E2E8F0;
+  --dropdown-shadow: rgba(0, 0, 0, 0.25);
+}
+
+/* Custom Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(var(--color-primary-rgb), 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(var(--color-primary-rgb), 0.3);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(var(--color-primary-rgb), 0.5);
+}
+
+/* Dark mode scrollbar */
+.dark-theme ::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.dark-theme ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.dark-theme ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+} 

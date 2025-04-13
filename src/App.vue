@@ -1,13 +1,11 @@
 <template>
-  <Toast>
-    <router-view />
-  </Toast>
+  <router-view />
 </template>
 
 <script setup lang="ts">
-import Toast from '@/components/Toast.vue'
+// Component logic here
 </script>
 
 <style>
-@import './assets/main.css';
+/* Global styles that should always be applied */
 </style> 

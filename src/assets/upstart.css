@@ -1,0 +1,39 @@
+/* Basic CSS reset and foundation styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Essential variables shared between auth and dashboard styles */
+:root {
+  --sidebar-width: 240px;
+  --sidebar-collapsed-width: 70px;
+  --transition: all 0.3s ease;
+  --z-sidebar: 1000;
+  --z-header: 900;
+  --border-radius: 8px;
+  
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-6: 1.5rem;
+  
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+}
+
+/* Avoid content flash before styles load */
+body {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+body.styles-loaded {
+  opacity: 1;
+} 

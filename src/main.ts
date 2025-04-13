@@ -1,89 +1,50 @@
-import { createApp, watch } from 'vue'
+import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 import i18n from './i18n'
-import './assets/main.css'
+// import './assets/main.css'
 import Toast from 'vue-toastification'
 import 'vue-toastification/dist/index.css'
 
-/* import the fontawesome core */
+// Import FontAwesome from plugins file
 import { library } from '@fortawesome/fontawesome-svg-core'
-
-/* import font awesome icon component */
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+// Import the WhatsApp icon separately
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 
-/* import specific icons */
-import { 
-  faUser, 
-  faEnvelope, 
-  faLock, 
-  faPhone, 
-  faEye, 
-  faEyeSlash,
-  faPaperPlane,
-  faClock,
-  faChartBar,
-  faArrowRight
-} from '@fortawesome/free-solid-svg-icons'
+// Import our configured fontawesome setup
+import '@/plugins/fontawesome'
 
-import { faGoogle, faFacebook, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+// Import component-specific styles
+import './assets/styles/components/accounts-table.css'
 
-/* add icons to the library */
-library.add(
-  faUser, 
-  faEnvelope, 
-  faLock, 
-  faPhone, 
-  faEye, 
-  faEyeSlash,
-  faPaperPlane,
-  faClock,
-  faChartBar,
-  faArrowRight,
-  faGoogle,
-  faFacebook,
-  faWhatsapp
-)
+// Add extra WhatsApp icon to library
+library.add(faWhatsapp)
 
 const app = createApp(App)
 
-// Function to update document direction and toast settings
-const updateDirection = (locale: string) => {
-  const isRTL = locale === 'ar'
-  document.documentElement.dir = isRTL ? 'rtl' : 'ltr'
-  document.documentElement.lang = locale
-}
-
-// Initial direction setup
-updateDirection(i18n.global.locale.value)
-
 // Toast configuration
 const toastOptions = {
-  // Position
-  position: i18n.global.locale.value === 'ar' ? 'top-left' : 'top-right',
-  // Timeout
-  timeout: 4000,
-  // Close button
+  position: "top-right",
+  timeout: 3000,
   closeOnClick: true,
   pauseOnFocusLoss: true,
   pauseOnHover: true,
-  // Draggable
   draggable: true,
   draggablePercent: 0.6,
-  // Close button
   showCloseButtonOnHover: false,
   hideProgressBar: false,
   closeButton: "button",
-  // Icons
   icon: true,
-  // Animation
+  rtl: false,
   transition: "Vue-Toastification__bounce",
-  // Multiple toasts
-  maxToasts: 5,
+  maxToasts: 20,
   newestOnTop: true,
-  // RTL support
-  rtl: i18n.global.locale.value === 'ar'
+  // Custom styling
+  toastClassName: "custom-toast",
+  bodyClassName: "custom-toast-body",
+  containerClassName: "custom-toast-container"
 }
 
 app.use(createPinia())
@@ -92,18 +53,64 @@ app.use(i18n)
 app.use(Toast, toastOptions)
 app.component('font-awesome-icon', FontAwesomeIcon)
 
-// Watch for language changes
-watch(
-  () => i18n.global.locale.value,
-  (newLocale) => {
-    updateDirection(newLocale)
-    // Update toast options
-    const toast = app.config.globalProperties.$toast
-    if (toast) {
-      toast.options.rtl = newLocale === 'ar'
-      toast.options.position = newLocale === 'ar' ? 'top-left' : 'top-right'
-    }
+// Load correct CSS based on route
+router.beforeEach((to, from, next) => {
+  // Auth routes (login, register, etc.)
+  const authRoutes = ['/login', '/register', '/'];
+  
+  // Remove any previously loaded stylesheets
+  const existingAuthStyle = document.getElementById('auth-style');
+  const existingDashboardStyle = document.getElementById('dashboard-style');
+  
+  if (existingAuthStyle) {
+    existingAuthStyle.remove();
   }
-)
+  
+  if (existingDashboardStyle) {
+    existingDashboardStyle.remove();
+  }
+  
+  // Determine which CSS to load based on the route
+  if (authRoutes.includes(to.path)) {
+    // Load auth CSS for login, register, home
+    const link = document.createElement('link');
+    link.id = 'auth-style';
+    link.rel = 'stylesheet';
+    link.href = '/src/assets/auth.css';
+    document.head.appendChild(link);
+  } else {
+    // Load dashboard CSS for all other routes
+    const link = document.createElement('link');
+    link.id = 'dashboard-style';
+    link.rel = 'stylesheet';
+    link.href = '/src/assets/styles/dashboard.css';
+    document.head.appendChild(link);
+  }
+  
+  next();
+});
+
+// Handle search query from header
+const handleSearch = (query: string) => {
+  if (!query.trim()) return;
+  
+  // Here you would implement actual search logic
+  console.log('Searching for:', query);
+  
+  // Example implementation could be:
+  if (router.currentRoute.value.name === 'accounts') {
+    // Filter accounts by name or phone number
+    const searchTerm = query.toLowerCase();
+    // filteredAccounts.value = accounts.value.filter(account => 
+    //   account.name.toLowerCase().includes(searchTerm) || 
+    //   account.phoneNumber.includes(searchTerm)
+    // );
+  } else if (router.currentRoute.value.name === 'messages') {
+    // Filter messages by content or recipient
+  } else {
+    // Global search across app
+    router.push({ path: '/search', query: { q: query }});
+  }
+}
 
 app.mount('#app') 
