@@ -350,6 +350,7 @@ onMounted(() => {
   color: var(--text-muted);
   font-size: 0.95rem;
   max-width: 500px;
+  padding-top: 13px;
 }
 
 .page-header-actions {
@@ -429,6 +430,7 @@ onMounted(() => {
 }
 
 .stat-info {
+  padding: 10px;
   flex: 1;
 }
 

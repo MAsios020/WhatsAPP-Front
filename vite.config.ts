@@ -10,6 +10,9 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
+  css: {
+    postcss: './postcss.config.js',
+  },
   assetsInclude: ['**/*.jpg', '**/*.jpeg', '**/*.png', '**/*.svg'],
   server: {
     host: '0.0.0.0', // Allow access from LAN
@@ -20,6 +23,6 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '') // Remove "/api" prefix
       }
-    }}
-
+    }
+  }
 }) 

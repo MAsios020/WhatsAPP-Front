@@ -383,6 +383,7 @@ onMounted(() => {
   color: var(--text-muted);
   font-size: 0.95rem;
   max-width: 500px;
+  padding-top: 13px;
 }
 
 .page-header-actions {
@@ -464,10 +465,12 @@ onMounted(() => {
 }
 
 .stat-info {
+
   flex: 1;
 }
 
 .stat-info h3 {
+   
   font-size: 0.95rem;
   font-weight: 600;
   margin-bottom: var(--spacing-1);
@@ -870,7 +873,7 @@ onMounted(() => {
   .section-header h2 {
     font-size: 1rem;
   }
-  
+
   .activity-list {
     height: 220px;
   }

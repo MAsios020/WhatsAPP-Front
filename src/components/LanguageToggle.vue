@@ -187,15 +187,23 @@ html[dir="rtl"] .lang-dropdown {
 }
 
 .lang-option {
-  display: flex;
+  text-align: center;
   align-items: center;
   gap: 8px;
   width: 100%;
   padding: 10px 16px;
-  text-align: left;
+    /* display: flex; */
   transition: background-color 0.2s ease;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-color);
+}
+
+.lang-option.button {
+    text-align: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 16px;
 }
 
 body.dark-theme .lang-option {
@@ -203,7 +211,7 @@ body.dark-theme .lang-option {
 }
 
 html[dir="rtl"] .lang-option {
-  text-align: right;
+  text-align: center;
   flex-direction: row-reverse;
 }
 
